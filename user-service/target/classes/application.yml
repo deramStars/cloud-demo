@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/jw
+    username: root
+    password: a82725568
+  application:
+    name: user-service
+mybatis:
+  type-aliases-package: cn.fengniaoyun.user.pojo
+logging:
+  level:
+    cn.fengniaoyun: debug
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka,http://127.0.0.1:8762/eureka
+  instance:
+    # 心跳间隔
+    lease-renewal-interval-in-seconds: 30
+    # 过期时常
+    lease-expiration-duration-in-seconds: 90

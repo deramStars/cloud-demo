@@ -1,0 +1,29 @@
+server:
+  port: 10010
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8762/eureka
+zuul:
+  routes:
+    # 服务id  映射值
+    user-service: /user-service/**
+  ignored-services:
+    - consumer
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 6000 # 设置hystrix的熔断超时时间为3000ms
+ribbon:
+  ConnectionTimeOut: 500 #连接负载超时时间
+  ReadTimeOut: 2000 # 超时时间 要小于熔断的时间
+
+
+
+
+spring:
+  application:
+    name: gateway

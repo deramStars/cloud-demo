@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: consumer
+server:
+  port: 8082
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka,http://127.0.0.1:8762/eureka
+      # 负载算法
+#user-service:
+#  ribbon:
+feign:
+  hystrix:
+    enabled: true  # 开启Feign的熔断功能
+ribbon:
+  ConnectionTimeOut: 500 #连接超时时间
+  ReadTimeOut: 2000 # 超时时间 要小于熔断的时间
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 3000 # 设置hystrix的超时时间为3000ms
